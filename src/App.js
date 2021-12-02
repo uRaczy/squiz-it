@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./theme/global.style";
 
-function App() {
+import List from './components/List/List';
+import useFetchData from "./hooks/useFetchData";
+
+const App = () => {
+  const { data } = useFetchData('https://my.api.mockaroo.com/accounts.json?key=3c370320');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+      <List props={data} />
     </div>
   );
 }
