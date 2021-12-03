@@ -9,11 +9,11 @@ export const StyledHeadline = styled.div`
 
 export const StyledColumn = styled.h3`
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
 
   @media (min-width: 768px) {
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
