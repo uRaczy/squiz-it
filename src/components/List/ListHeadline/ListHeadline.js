@@ -1,14 +1,20 @@
-import { StyledHeadline } from './ListHeadline.style';
+import { StyledHeadline, StyledColumn } from './ListHeadline.style';
 
-const ListHeadline = ({props}) => {
-  const createTitles = () => {
-    console.log(typeof(props))
-  }
-  return (
-    <StyledHeadline>
-      {createTitles()}
-    </StyledHeadline>
-  )
-}
+const ListHeadline = ({props}) => (
+  <StyledHeadline>
+    <StyledColumn>
+      name
+    </StyledColumn>
+    <StyledColumn>
+      country
+    </StyledColumn>
+    <StyledColumn>
+      industry
+    </StyledColumn>
+    <StyledColumn>
+      employees
+    </StyledColumn>
+  </StyledHeadline>
+);
 
 export default ListHeadline;

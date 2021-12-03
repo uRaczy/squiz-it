@@ -1,13 +1,15 @@
-import { StyledList } from "./List.style"
+import { StyledListComponent, StyledList } from "./List.style"
 import ListHeadline from "./ListHeadline/ListHeadline";
+import ListItem from './ListItem/ListItem';
 
 const List = ({props}) => {
-  console.log('list', props);
   return(
-    <StyledList>
-      <ListHeadline props={props[0]} />
-    </StyledList>
-
+    <StyledListComponent>
+      <ListHeadline />
+      <StyledList>
+        {props.map((element) => <ListItem props={element} key={element.id} />)}
+      </StyledList>
+    </StyledListComponent>
   )
 }
 

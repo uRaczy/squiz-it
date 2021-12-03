@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
-export const StyledHeadline = styled.h2`
-  display: flex;
-  justify-content: space-between;
+export const StyledHeadline = styled.div`
+  display: grid;
+  grid-template-columns: 20% 20% 40% 20%;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #c0c0c0;
 `;
 
-const setWidth = (numberOfElements) => {
-  const width = 100 / numberOfElements;
-  return `${width}%`
-}
+export const StyledColumn = styled.h3`
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
 
-export const StyledSpan = styled.span`
-  width: ${props => setWidth(props.length)}
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 

@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="App">
       <GlobalStyle />
-      <List props={data} />
+      {data.length > 0 ? <List props={data} /> : <div>loading... </div>}
     </div>
   );
 }
