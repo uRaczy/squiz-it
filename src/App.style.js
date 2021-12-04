@@ -6,6 +6,5 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   @media (min-width: 768px) {
     flex-direction: row;
-    width: 80%;
   }
 `;

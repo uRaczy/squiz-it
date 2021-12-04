@@ -1,7 +1,6 @@
 import { StyledItem, StyledText } from "./ListItem.style" 
 
 const ListItem = ({props}) => {
-  console.log(props);
   return (
     <StyledItem>
       <StyledText>

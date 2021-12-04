@@ -1,9 +1,21 @@
+import { useState } from 'react';
+
 import { StyledControls } from "./Controls.style"
 
-const Controls = () => (
-  <StyledControls>
+import CountryFilter from '../Filters/CountryFilter/CountryFilter';
+import IndustryFilter from '../Filters/IndustryFilter/IndustryFilter'
 
-  </StyledControls>
-)
+const Controls = ({ props }) => {
+  const handleClick = () => {
+
+  }
+  return (
+    <StyledControls>
+      <CountryFilter props={props} />
+      <IndustryFilter props={props} />
+    </StyledControls>
+  )
+}
+
 
 export default Controls;

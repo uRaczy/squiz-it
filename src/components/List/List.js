@@ -2,12 +2,16 @@ import { StyledListComponent, StyledList } from "./List.style"
 import ListHeadline from "./ListHeadline/ListHeadline";
 import ListItem from './ListItem/ListItem';
 
-const List = ({props}) => {
+import { useList } from '../../hooks/useModList';
+
+const List = () => {
+  const list = useList();
+
   return(
     <StyledListComponent>
       <ListHeadline />
       <StyledList>
-        {props.map((element) => <ListItem props={element} key={element.id} />)}
+      { list.length > 0 ? list.map((element) => <ListItem props={element} key={element.id} />) : <div>Loading...</div> }
       </StyledList>
     </StyledListComponent>
   )

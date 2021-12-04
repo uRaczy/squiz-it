@@ -4,7 +4,6 @@ import axios from "axios";
 const useFetchData = (url) => {
   const [data, setData] = useState([]);
   
-
   useEffect(() => {
     if (!url) return;
 

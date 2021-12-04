@@ -8,6 +8,7 @@ export const StyledItem = styled.li`
 
 export const StyledText = styled.p`
   text-align: center;
+  border-bottom: 1px solid #e0e0e0;
   font-size: 12px;
   @media (min-width: 768px) {
     font-size: 14px;
