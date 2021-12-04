@@ -6,25 +6,40 @@ import { StyledContainer } from "./App.style";
 import List from './components/List/List';
 import Controls from './components/Controls/Controls';
 
-// import useFetchData from "./hooks/useFetchData";
 import tempFetch from './hooks/tempFetch';
-import { useList, useListUpdate } from './hooks/useModList';
+import useFetchData from "./hooks/useFetchData";
+import { useOriginalList, useOriginalListUpdate, useList, useListUpdate } from './hooks/useModList';
 
 const App = () => {
-  // const { data } = useFetchData('https://my.api.mockaroo.com/accounts.json?key=3c370320');
-  const list = useList();
-  const updateList = useListUpdate();
+  const useOgList = useOriginalList();
+  const setOgList = useOriginalListUpdate();
+  const setList = useListUpdate();
+  // const { data } = useFetchData('https://my.api.mockaroo.com/squiz.json?key=1e81f470');
+  // setOgList(data);
+  // setList(useOgList);
+  setOgList(tempFetch);
+  setList(useOgList);
 
-  useEffect(() => {
-    updateList(tempFetch);
-  }, [])
+
+  const renderIfFetched = () => {
+    if (Array.isArray(useOgList) && useOgList.length > 0) {
+      return (
+        <>
+          <Controls props={useOgList} />
+          <List />
+        </>
+      )
+    }
+    else {
+      return <div>Loading data</div>
+    }
+  }
 
   return (
     <div className="App">
       <GlobalStyle />
       <StyledContainer>
-        <Controls props={tempFetch} />
-        <List />
+        {renderIfFetched()}
       </StyledContainer>
     </div>
   );

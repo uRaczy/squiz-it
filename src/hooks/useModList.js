@@ -1,26 +1,29 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
-import tempFetch from './tempFetch';
-
-const OriginalListContext = React.createContext();
-const ListContext = React.createContext();
-const ListUpdateContext = React.createContext();
-const ListResetContext = React.createContext();
+const SetOriginalListContext = React.createContext();
+const UseOriginalListContext = React.createContext();
+const SetListContext = React.createContext();
+const UseListContext = React.createContext();
+const ResetListContext = React.createContext();
 
 export const useOriginalList = () => {
-  return useContext(OriginalListContext);
+  return useContext(UseOriginalListContext);
+}
+
+export const useOriginalListUpdate = () => {
+  return useContext(SetOriginalListContext);
 }
 
 export const useList = () => {
-  return useContext(ListContext);
+  return useContext(UseListContext);
 }
 
 export const useListUpdate = () => {
-  return useContext(ListUpdateContext);
+  return useContext(SetListContext);
 }
 
 export const useListReset = () => {
-  return useContext(ListResetContext);
+  return useContext(ResetListContext);
 }
 
 export const ListProvider = ({ children }) => {
@@ -35,21 +38,23 @@ export const ListProvider = ({ children }) => {
     setModifiedList(originalList);
   }
 
-  useEffect(() => {
-    setOriginalList(tempFetch);
-    console.log(originalList);
-  }, [tempFetch, originalList])
+  const updateOriginalList = (data) => {
+    setOriginalList(data);
+  }
+
 
   return (
-    <OriginalListContext.Provider value={originalList}>
-      <ListContext.Provider value={modifiedList}>
-        <ListUpdateContext.Provider value={updateList}>
-          <ListResetContext.Provider value={resetList}>
-            {children}
-          </ListResetContext.Provider>
-        </ListUpdateContext.Provider>
-      </ListContext.Provider>
-    </OriginalListContext.Provider>
+    <SetOriginalListContext.Provider value={updateOriginalList}>
+      <UseOriginalListContext.Provider value={originalList}>
+        <SetListContext.Provider value={updateList}>
+          <UseListContext.Provider value={modifiedList}>
+            <ResetListContext.Provider value={resetList}>
+              {children}
+            </ResetListContext.Provider>
+          </UseListContext.Provider>
+        </SetListContext.Provider>
+      </UseOriginalListContext.Provider>
+    </SetOriginalListContext.Provider>
   )
 }
 

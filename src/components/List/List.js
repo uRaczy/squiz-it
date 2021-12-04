@@ -7,11 +7,11 @@ import { useList } from '../../hooks/useModList';
 const List = () => {
   const list = useList();
 
-  return(
+  return (
     <StyledListComponent>
       <ListHeadline />
       <StyledList>
-      { list.length > 0 ? list.map((element) => <ListItem props={element} key={element.id} />) : <div>Loading...</div> }
+        {list.map((element) => <ListItem props={element} key={element.id} />)}
       </StyledList>
     </StyledListComponent>
   )
