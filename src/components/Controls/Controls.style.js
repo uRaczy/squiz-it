@@ -5,7 +5,7 @@ export const StyledControls = styled.div`
   flex-direction: column;
   background-color: #f0f0f0;
   width: 100%;
-  padding: 20px 0;
+  padding-bottom: 20px;
   @media (min-width: 768px) {
     width: 30%;
     padding: 0;

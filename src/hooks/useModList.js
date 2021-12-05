@@ -44,17 +44,17 @@ export const ListProvider = ({ children }) => {
 
 
   return (
-    <SetOriginalListContext.Provider value={updateOriginalList}>
-      <UseOriginalListContext.Provider value={originalList}>
-        <SetListContext.Provider value={updateList}>
-          <UseListContext.Provider value={modifiedList}>
+    <UseOriginalListContext.Provider value={originalList}>
+      <SetOriginalListContext.Provider value={updateOriginalList}>
+        <UseListContext.Provider value={modifiedList}>
+          <SetListContext.Provider value={updateList}>
             <ResetListContext.Provider value={resetList}>
               {children}
             </ResetListContext.Provider>
-          </UseListContext.Provider>
-        </SetListContext.Provider>
-      </UseOriginalListContext.Provider>
-    </SetOriginalListContext.Provider>
+          </SetListContext.Provider>
+        </UseListContext.Provider>
+      </SetOriginalListContext.Provider>
+    </UseOriginalListContext.Provider>
   )
 }
 

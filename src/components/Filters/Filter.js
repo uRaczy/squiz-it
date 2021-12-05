@@ -1,13 +1,13 @@
-import { StyledHeadline, StyledList, StyledItem } from './CountryFilter.style';
+import { StyledHeadline, StyledList, StyledItem } from './Filter.style';
 
-const CountryFilter = ({ itemsList, handleClick }) => {
+const Filter = ({ itemsList, handleClick, title }) => {
 
   const createMenuItems = () => {
     let keyNum = 0;
     return itemsList.map(element => {
       keyNum++;
       return (
-        <StyledItem key={keyNum} onClick={handleClick} selected={false}>
+        <StyledItem key={keyNum} onClick={handleClick}>
           {element}
         </StyledItem>
       )
@@ -17,11 +17,11 @@ const CountryFilter = ({ itemsList, handleClick }) => {
   return (
     <StyledList>
       <StyledHeadline>
-        Filter by Countries
+        {title}
       </StyledHeadline>
       {createMenuItems()}
     </StyledList>
   )
 }
 
-export default CountryFilter;
+export default Filter;

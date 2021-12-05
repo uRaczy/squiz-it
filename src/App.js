@@ -17,9 +17,14 @@ const App = () => {
   // const { data } = useFetchData('https://my.api.mockaroo.com/squiz.json?key=1e81f470');
   // setOgList(data);
   // setList(useOgList);
-  setOgList(tempFetch);
-  setList(useOgList);
 
+  useEffect(() => {
+    setOgList(tempFetch);
+  }, [tempFetch]);
+
+  useEffect(() => {
+    setList(useOgList)
+  }, [useOgList]);
 
   const renderIfFetched = () => {
     if (Array.isArray(useOgList) && useOgList.length > 0) {

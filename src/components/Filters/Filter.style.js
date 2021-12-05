@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const StyledList = styled.ul`
   list-style-type: none;
   padding: 0;
-  `;
+  margin: 0;
+`;
 
 export const StyledHeadline = styled.li`
   padding: 20px;
@@ -17,9 +18,7 @@ export const StyledItem = styled.li`
   cursor: pointer;
 
   &:hover {
-    background-color: #eaeaea;
+    background-color: #e7e7e7;
+    transition: all .4s ease;
   }
-`;
-
-export const StyledCheckbox = styled.input`
 `;
