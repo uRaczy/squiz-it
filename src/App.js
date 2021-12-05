@@ -6,21 +6,17 @@ import { StyledContainer } from "./App.style";
 import List from './components/List/List';
 import Controls from './components/Controls/Controls';
 
-import tempFetch from './hooks/tempFetch';
 import useFetchData from "./hooks/useFetchData";
-import { useOriginalList, useOriginalListUpdate, useList, useListUpdate } from './hooks/useModList';
+import { useOriginalList, useOriginalListUpdate, useListUpdate } from './hooks/useModList';
 
 const App = () => {
   const useOgList = useOriginalList();
   const setOgList = useOriginalListUpdate();
   const setList = useListUpdate();
-  // const { data } = useFetchData('https://my.api.mockaroo.com/squiz.json?key=1e81f470');
-  // setOgList(data);
-  // setList(useOgList);
-
+  const { data } = useFetchData('https://my.api.mockaroo.com/squiz.json?key=1e81f470');
   useEffect(() => {
-    setOgList(tempFetch);
-  }, [tempFetch]);
+    setOgList(data);
+  }, [data]);
 
   useEffect(() => {
     setList(useOgList)
