@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./theme/global.style";
 
-function App() {
+import { useEffect } from "react";
+
+import { StyledContainer } from "./App.style";
+import List from './components/List/List';
+import Controls from './components/Controls/Controls';
+
+import useFetchData from "./hooks/useFetchData";
+import { useOriginalList, useOriginalListUpdate, useListUpdate } from './hooks/useModList';
+
+const App = () => {
+  const useOgList = useOriginalList();
+  const setOgList = useOriginalListUpdate();
+  const setList = useListUpdate();
+  const { data } = useFetchData('https://my.api.mockaroo.com/squiz.json?key=1e81f470');
+
+  useEffect(() => {
+    setOgList(data);
+  }, [data]);
+
+  useEffect(() => {
+    setList(useOgList)
+  }, [useOgList]);
+
+  const renderIfFetched = () => {
+    if (Array.isArray(useOgList) && useOgList.length > 0) {
+      return (
+        <>
+          <Controls props={useOgList} />
+          <List />
+        </>
+      )
+    }
+    else {
+      return <div>Loading data</div>
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+      <StyledContainer>
+        {renderIfFetched()}
+      </StyledContainer>
     </div>
   );
 }

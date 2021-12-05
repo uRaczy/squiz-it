@@ -4,9 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import ListProvider from "./hooks/useModList";
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ListProvider>
+      <App />
+    </ListProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
