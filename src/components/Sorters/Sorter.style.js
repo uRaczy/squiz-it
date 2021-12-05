@@ -4,7 +4,7 @@ export const StyledSorter = styled.div`
   cursor: pointer;
   padding: 20px;
   font-weight: bold;
-  background-color: #e0e0e0;
+  background-color: #dadada;
 
   &:hover {
     background-color: #cacaca;

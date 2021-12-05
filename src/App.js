@@ -14,6 +14,7 @@ const App = () => {
   const setOgList = useOriginalListUpdate();
   const setList = useListUpdate();
   const { data } = useFetchData('https://my.api.mockaroo.com/squiz.json?key=1e81f470');
+
   useEffect(() => {
     setOgList(data);
   }, [data]);
